@@ -18,6 +18,8 @@
 $router->group([
     'prefix' => 'api'
 ], function() use ($router) {
+
+    //Route for foods
     $router->group([
         'prefix' => 'foods'
     ], function() use ($router) {
@@ -26,5 +28,22 @@ $router->group([
         $router->get('/{id}', 'FoodsController@show');
         $router->delete('/{id}', 'FoodsController@destroy');
         $router->put('/{id}', 'FoodsController@update');
+    });
+
+    //Route for authentications
+    $router->group([
+        'prefix' => 'auth'
+    ], function() use ($router) {
+        $router->post('/register', 'AuthController@register');
+        $router->post('/login', 'AuthController@login');
+    });
+
+    //Route for city
+    $router->group([
+        'prefix' => 'city'
+    ], function() use ($router) {
+        $router->post('/', 'CityController@store');
+        $router->get('/', 'CityController@index');
+        $router->delete('/{id}', 'CityController@delete');
     });
 });

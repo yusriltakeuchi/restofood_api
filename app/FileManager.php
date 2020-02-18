@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 class FileManager extends Model
 {
     private $slug;
+    public $fileResult;
     public function __construct()
     {
         $this->slug = new Slugify();
@@ -19,6 +20,7 @@ class FileManager extends Model
         $fileName = $this->slug->slugify($title) . '-' . Str::random(10) .'.png';
 
         $file->move($filePath, $fileName);
+        $this->fileResult = $fileName;
         return $path . $fileName;
     }
 

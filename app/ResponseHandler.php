@@ -43,4 +43,12 @@ class ResponseHandler extends Model
             'error' => $errors
         ]);
     }
+
+    public function badCredentials() {
+        
+        return response()->json([
+            'status' => 401,
+            'message' => 'Username or password is wrong',
+        ]);
+    }
 }
