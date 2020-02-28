@@ -38,6 +38,13 @@ $router->group([
         $router->post('/login', 'AuthController@login');
     });
 
+    //Route for profile
+    $router->group([
+        'prefix' => 'profile'
+    ], function() use ($router) {
+        $router->get('/{id}', 'UserController@getProfile');
+    });
+
     //Route for city
     $router->group([
         'prefix' => 'city'
